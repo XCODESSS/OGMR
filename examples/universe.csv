@@ -1,0 +1,4 @@
+symbol,start_date,end_date,long_allowed,short_allowed
+NSE:SBIN-EQ,2026-11-01,2026-12-31,true,false
+NSE:RELIANCE-EQ,2026-11-01,2026-12-31,true,false
+NSE:TCS-EQ,2026-11-01,2026-12-31,true,false

@@ -1,0 +1,16 @@
+.cache/
+__pycache__/
+.venv/
+research/
+docs/VALIDATION.md
+.secrets/
+.env
+.env.*
+data/
+runs/
+STOP_TRADING
+*.sqlite*
+*.log
+build/
+dist/
+*.egg-info/
