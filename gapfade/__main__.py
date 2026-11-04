@@ -1,5 +1,7 @@
 import argparse
 from contextlib import closing
+from dataclasses import replace
+from datetime import date
 import json
 from pathlib import Path
 import sys
@@ -12,7 +14,7 @@ from .runner import run_session
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="NSE equity gap-fade research and FYERS runner")
+    parser = argparse.ArgumentParser(description="Gap-fade research: NSE equity runner and offline NIFTY options")
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("demo", help="Generate fictitious inputs; never submits orders")
     p.add_argument("--out", default="data/demo")
@@ -33,6 +35,17 @@ def main(argv=None):
     p.add_argument("--references", required=True)
     p.add_argument("--bars", required=True)
     p.add_argument("--out", required=True)
+    p = sub.add_parser("options-demo", help="Generate fictitious options inputs; offline only")
+    p.add_argument("--out", required=True)
+    for command in ("options-audit", "options-backtest"):
+        p = sub.add_parser(command, help="Offline NIFTY options CSV research")
+        p.add_argument("--data", required=True)
+        p.add_argument("--start", required=True)
+        p.add_argument("--end", required=True)
+        p.add_argument("--out", required=True)
+        if command == "options-backtest":
+            p.add_argument("--config", default="config/options-research.json")
+            p.add_argument("--no-confirmation", action="store_true")
     for mode in ("paper", "live"):
         p = sub.add_parser(mode)
         p.add_argument("--config", default="config/paper.json")
@@ -64,6 +77,23 @@ def main(argv=None):
         elif args.command == "backtest":
             print(json.dumps(backtest.run(Config.load(args.config), args.universe, args.calendar,
                                          args.references, args.bars, args.out), indent=2))
+        elif args.command == "options-demo":
+            from .options_demo import create
+            create(args.out)
+            print(f"Synthetic options inputs written to {args.out}; no market performance verified.")
+        elif args.command in ("options-audit", "options-backtest"):
+            from .options_data import OptionsDataset, audit
+            from .options_model import OptionsConfig
+            from .options_backtest import run
+            start, end = date.fromisoformat(args.start), date.fromisoformat(args.end)
+            if args.command == "options-audit":
+                result = audit(OptionsDataset(args.data), start, end, Path(args.out))
+            else:
+                config = OptionsConfig.load(args.config)
+                if args.no_confirmation:
+                    config = replace(config, confirmation=False)
+                result = run(config, Path(args.data), start, end, Path(args.out))
+            print(json.dumps(result, indent=2))
         elif args.command in ("paper", "live"):
             config = Config.load(args.config)
             if args.command == "live":
