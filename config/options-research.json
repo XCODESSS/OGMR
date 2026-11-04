@@ -1,0 +1,11 @@
+{
+  "capital": "100000",
+  "gap_threshold": "0.005",
+  "confirmation": true,
+  "stop_fraction": "0.25",
+  "risk_fraction": "0.005",
+  "premium_cap_fraction": "0.02",
+  "slippage_bps": "25",
+  "fee_bps": "10",
+  "fixed_fee_per_order": "20"
+}
