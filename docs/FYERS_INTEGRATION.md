@@ -181,4 +181,6 @@ The `.lock` next to the SQLite journal prevents two processes sharing it. A cras
 
 ## F&O scope
 
-This release rejects futures/options identifiers. Futures need expiry/roll handling, point value, lot sizes, margin and contract-level price data. Options additionally need expiry/strike selection, premium-based fills, bid/ask liquidity and whole-lot sizing. The stock signal may become an input, but its stock backtest does not validate either derivative strategy. F&O remains a separate implementation and validation stage.
+The stock `fetch`, `backtest`, `paper` and `live` commands still reject futures/options identifiers. A separate offline NIFTY options path now provides historical contract selection, whole-lot sizing and premium-based replay through `options-demo`, `options-audit` and `options-backtest`. See [NIFTY options research](NIFTY_OPTIONS.md) and [the normalized export format](../examples/options/FORMAT.md).
+
+Your friend supplies audited FYERS exports for that path; the stock downloader does not produce options inputs. No options broker orders, options paper/live runner or authenticated expired-contract downloader are added. Futures remain unsupported. A stock backtest does not validate the separate options strategy, and synthetic options fixtures do not establish historical profitability.

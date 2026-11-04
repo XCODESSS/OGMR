@@ -1,10 +1,12 @@
 # OGMR: Overnight Gap Mean Reversion
 
-An independent Python implementation of an opening-gap mean-reversion hypothesis, with CSV backtesting, FYERS market-data paper trading, and explicitly armed FYERS live execution. Python 3.11+ is required. The runtime uses only the Python standard library.
+An independent Python implementation of an opening-gap mean-reversion hypothesis, with stock CSV backtesting, stock FYERS paper/live execution, and a separate offline NIFTY options backtester. Python 3.11+ is required. The runtime uses only the Python standard library.
 
 The reference rules buy gaps at or below -2% and short gaps at or above +2%, select at most 10 stocks by absolute gap, and allocate up to 10% of start-of-day capital per position. The bot captures its signal before 09:16 IST, enters after that time, and exits at 15:00 or on a configured daily-loss trigger. Both directions require explicit universe permissions. The example watchlist permits longs only until short eligibility is verified.
 
-This version supports NSE cash equities. Futures and options are not implemented; the code rejects those instruments. The strategy is an independent reconstruction inspired by [CuriousObservator's published gap-fade research](https://github.com/CuriousObservator/Systematic-Intraday-Mean-reversion-Strategy). It does not reproduce a verified profitable strategy or establish the original author's exact rules.
+The rules above and the `fetch`, `backtest`, `paper` and `live` commands support NSE cash equities. The separate `options-demo`, `options-audit` and `options-backtest` commands test NIFTY CE/PE buying using local historical contract/premium data. Options paper/live execution and authenticated options downloads are not implemented. Read [NIFTY options rules and commands](docs/NIFTY_OPTIONS.md) and give your data provider [the export format](examples/options/FORMAT.md).
+
+The strategy is an independent reconstruction inspired by [CuriousObservator's published gap-fade research](https://github.com/CuriousObservator/Systematic-Intraday-Mean-reversion-Strategy). It does not reproduce a verified profitable strategy or establish the original author's exact rules. The options variant introduces separate, unvalidated research rules.
 
 ## Start here
 
