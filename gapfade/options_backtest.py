@@ -114,6 +114,34 @@ def replay_session(config, dataset, day, equity):
         raise ReplayError(str(exc), row, position) from exc
 
 
+def performance(trades, daily, capital):
+    """Ledger metrics shared by single runs and walk-forward; daily closes only."""
+    initial = number(capital)
+    equity = daily[-1]['end_equity'] if daily else initial
+    pnl = [t['net_pnl'] for t in trades]
+    wins = sum((p for p in pnl if p > 0), ZERO)
+    losses = -sum((p for p in pnl if p < 0), ZERO)
+    peak, drawdown = initial, ZERO
+    for row in daily:
+        peak = max(peak, row['end_equity'])
+        drawdown = min(drawdown, row['end_equity'] / peak - 1)
+    regular_returns = [float(row['return_']) for row in daily if row['status'] != 'excluded']
+    return dict(
+        evaluated_sessions=len(daily), regular_sessions=sum(row['status'] != 'excluded' for row in daily),
+        special_sessions=sum(row['status'] == 'excluded' for row in daily),
+        no_signal_sessions=sum(row['reason'] in ('below_gap_threshold', 'unconfirmed', 'already_filled',
+                                                'target_before_entry') for row in daily),
+        trade_count=len(trades), initial_equity=capital, final_equity=str(equity),
+        net_profit=str(equity - initial),
+        total_return=float(equity / initial - 1),
+        net_expectancy_per_trade=str(sum(pnl, ZERO) / len(pnl)) if pnl else None,
+        win_rate=sum(p > 0 for p in pnl) / len(pnl) if pnl else None,
+        profit_factor=float(wins / losses) if losses else None,
+        max_drawdown_daily_close=float(drawdown), drawdown_basis='daily_close_only',
+        sharpe_daily_annualized_rf_zero=(mean(regular_returns) / stdev(regular_returns) * math.sqrt(252)
+            if len(regular_returns) > 1 and stdev(regular_returns) > 0 else None))
+
+
 def _ledgers(output, trades, daily, coverage):
     write_csv(output / 'trades.csv', trades, TRADE_FIELDS)
     rows = [dict(session=d['session'], status=d['status'], reason=d['reason'],
@@ -161,30 +189,9 @@ def run(config, dataset_root, start, end, output):
                 raise TradingError('Simulated capital exhausted')
         manifest = _manifest(config, dataset, start, end, coverage)
         write_json(output / 'manifest.json', manifest)
-        pnl = [t['net_pnl'] for t in trades]
-        wins = sum((p for p in pnl if p > 0), ZERO)
-        losses = -sum((p for p in pnl if p < 0), ZERO)
-        peak, drawdown = number(config.capital), ZERO
-        for row in daily:
-            peak = max(peak, row['end_equity'])
-            drawdown = min(drawdown, row['end_equity'] / peak - 1)
-        regular_returns = [float(row['return_']) for row in daily if row['status'] != 'excluded']
         summary = dict(strategy=VERSION, data_kind=dataset.provenance['data_kind'],
             provider=dataset.provenance['provider'], start=str(start), end=str(end),
-            evaluated_sessions=len(daily), regular_sessions=sum(row['status'] != 'excluded' for row in daily),
-            special_sessions=sum(row['status'] == 'excluded' for row in daily),
-            no_signal_sessions=sum(row['reason'] in ('below_gap_threshold', 'unconfirmed', 'already_filled',
-                                                    'target_before_entry') for row in daily),
-            size_skip_sessions=sum(row['reason'] == 'insufficient_capital' for row in daily),
-            trade_count=len(trades), initial_equity=config.capital, final_equity=str(equity),
-            net_profit=str(equity - number(config.capital)),
-            total_return=float(equity / number(config.capital) - 1),
-            net_expectancy_per_trade=str(sum(pnl, ZERO) / len(pnl)) if pnl else None,
-            win_rate=sum(p > 0 for p in pnl) / len(pnl) if pnl else None,
-            profit_factor=float(wins / losses) if losses else None,
-            max_drawdown_daily_close=float(drawdown), drawdown_basis='daily_close_only',
-            sharpe_daily_annualized_rf_zero=(mean(regular_returns) / stdev(regular_returns) * math.sqrt(252)
-                if len(regular_returns) > 1 and stdev(regular_returns) > 0 else None),
+            **performance(trades, daily, config.capital),
             limitations=LIMITATIONS)
         _ledgers(output, trades, daily, coverage)
         write_json(output / 'summary.json', summary)
