@@ -14,7 +14,7 @@ from .runner import run_session
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Gap-fade research: NSE equity runner and offline NIFTY options")
+    parser = argparse.ArgumentParser(description="Gap-fade: NSE equities, options research and live-data paper testing")
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("demo", help="Generate fictitious inputs; never submits orders")
     p.add_argument("--out", default="data/demo")
@@ -37,6 +37,12 @@ def main(argv=None):
     p.add_argument("--out", required=True)
     p = sub.add_parser("options-demo", help="Generate fictitious options inputs; offline only")
     p.add_argument("--out", required=True)
+    p = sub.add_parser("options-paper", help="Live-market NIFTY options simulation; data GETs only, no orders")
+    p.add_argument("--config", default="config/options-research.json")
+    p.add_argument("--calendar", required=True)
+    p.add_argument("--token-file", default=".secrets/fyers.json")
+    p.add_argument("--out", required=True, help="Persistent output directory for one paper session")
+    p.add_argument("--kill-file", default="STOP_OPTIONS_PAPER")
     for command in ("options-audit", "options-backtest"):
         p = sub.add_parser(command, help="Offline NIFTY options CSV research")
         p.add_argument("--data", required=True)
@@ -81,6 +87,11 @@ def main(argv=None):
             from .options_demo import create
             create(args.out)
             print(f"Synthetic options inputs written to {args.out}; no market performance verified.")
+        elif args.command == "options-paper":
+            from .options_model import OptionsConfig
+            from .options_paper import run
+            print(json.dumps(run(OptionsConfig.load(args.config), args.calendar, args.token_file,
+                                 args.out, args.kill_file), indent=2, default=str))
         elif args.command in ("options-audit", "options-backtest"):
             from .options_data import OptionsDataset, audit
             from .options_model import OptionsConfig

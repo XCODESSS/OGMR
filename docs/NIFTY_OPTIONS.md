@@ -1,6 +1,6 @@
 # NIFTY options gap-fade research
 
-The options path tests an opening-gap reversal by buying a NIFTY CE or PE. It reads actual historical option premiums from local CSVs. It has no options paper/live runner or downloader producing normalized backtest inputs. A [standalone FYERS expired-options sample downloader](FYERS_EXPIRED_SAMPLE.md) saves raw data for access checks and later normalization. The existing `fetch`, `paper` and `live` commands remain cash-equity commands.
+The options path tests an opening-gap reversal by buying a NIFTY CE or PE. Offline research reads actual historical option premiums from local CSVs. The separate [options-paper command](OPTIONS_PAPER.md) performs live-market testing with simulated fills and a read-only FYERS market-data adapter. There is no real-money options execution mode or downloader producing normalized backtest inputs. A [standalone FYERS expired-options sample downloader](FYERS_EXPIRED_SAMPLE.md) saves raw data for access checks and later normalization. The existing `fetch`, `paper` and `live` commands remain cash-equity commands.
 
 Strategy version: `nifty-gap-fade-options-v1`. Its thresholds and risk settings are proposed research choices, not parameters proven to make money. No real FYERS data or broker account was used to validate this implementation.
 
