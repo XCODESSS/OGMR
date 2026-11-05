@@ -97,7 +97,7 @@ Provide spot minutes 09:15–09:20 for signal formation and pending-entry cancel
 | research_splits | Historical datasets: object with `development`, `validation`, `test`, each an inclusive two-element ISO date array. |
 | splits_frozen_at | Historical datasets: offset-aware timestamp no later than exported_at. |
 
-The three research intervals must be chronological and non-overlapping. Every evaluated historical session must fall inside one of them. Freeze them before inspecting strategy returns; the recorded timestamp is an operator assertion, not proof of that research discipline. Synthetic demos omit these two research-date fields. Each run copies the dates and source evidence into its manifest.
+The three research intervals must be chronological and non-overlapping. Every evaluated historical session must fall inside one of them. Freeze them before inspecting strategy returns; the recorded timestamp is an operator assertion, not proof of that research discipline. The single-run synthetic demo omits these two research-date fields, but walk-forward commands require them for all data, including synthetic. Each run copies the dates and source evidence into its manifest.
 
 Keep source candle/metadata exports inside `raw/` without credentials. For each source file, obtain its hash with PowerShell, for example:
 

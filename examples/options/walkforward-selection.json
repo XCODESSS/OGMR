@@ -1,0 +1,8 @@
+{
+  "objective": "net_expectancy_per_trade",
+  "min_training_trades": 1,
+  "grid": {
+    "confirmation": [true, false],
+    "gap_threshold": ["0.005", "0.0075"]
+  }
+}

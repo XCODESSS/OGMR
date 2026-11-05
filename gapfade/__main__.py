@@ -52,6 +52,23 @@ def main(argv=None):
         if command == "options-backtest":
             p.add_argument("--config", default="config/options-research.json")
             p.add_argument("--no-confirmation", action="store_true")
+    p = sub.add_parser("options-walkforward-demo", help="Generate fictitious walk-forward inputs; offline only")
+    p.add_argument("--out", required=True)
+    p = sub.add_parser("options-walkforward", help="Offline walk-forward over authorized research sessions")
+    p.add_argument("--config", default="config/options-research.json")
+    p.add_argument("--data", required=True)
+    p.add_argument("--mode", required=True, choices=["rolling", "expanding"])
+    p.add_argument("--train-sessions", required=True, type=int)
+    p.add_argument("--oos-sessions", required=True, type=int)
+    p.add_argument("--step-sessions", type=int)
+    p.add_argument("--start")
+    p.add_argument("--end")
+    p.add_argument("--selection", help="Optional grid and objective, evaluated on training sessions only")
+    p.add_argument("--out", required=True)
+    p = sub.add_parser("options-walkforward-test", help="Evaluate the held-out test once from a frozen research run")
+    p.add_argument("--frozen-run", required=True)
+    p.add_argument("--data", required=True)
+    p.add_argument("--out", required=True)
     for mode in ("paper", "live"):
         p = sub.add_parser(mode)
         p.add_argument("--config", default="config/paper.json")
@@ -105,6 +122,24 @@ def main(argv=None):
                     config = replace(config, confirmation=False)
                 result = run(config, Path(args.data), start, end, Path(args.out))
             print(json.dumps(result, indent=2))
+        elif args.command == "options-walkforward-demo":
+            from .options_walkforward_demo import create
+            create(args.out)
+            print(f"Synthetic walk-forward inputs written to {args.out}; no market performance verified.")
+        elif args.command == "options-walkforward":
+            from .options_model import OptionsConfig
+            from .options_walkforward import SelectionSpec, WalkForwardSpec, run_walkforward
+            result = run_walkforward(
+                OptionsConfig.load(args.config),
+                WalkForwardSpec(args.mode, args.train_sessions, args.oos_sessions, args.step_sessions),
+                Path(args.data), Path(args.out),
+                selection=SelectionSpec.load(args.selection) if args.selection else None,
+                start=date.fromisoformat(args.start) if args.start else None,
+                end=date.fromisoformat(args.end) if args.end else None)
+            print(json.dumps(result, indent=2))
+        elif args.command == "options-walkforward-test":
+            from .options_walkforward import run_heldout_test
+            print(json.dumps(run_heldout_test(Path(args.frozen_run), Path(args.data), Path(args.out)), indent=2))
         elif args.command in ("paper", "live"):
             config = Config.load(args.config)
             if args.command == "live":
