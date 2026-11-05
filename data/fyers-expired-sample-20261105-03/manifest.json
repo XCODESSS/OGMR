@@ -1,0 +1,35 @@
+{
+  "provider": "FYERS expired F&O API",
+  "downloaded_at": "2026-11-05T10:27:56.308898+05:30",
+  "expiry": "2026-11-03",
+  "session": "2026-11-02",
+  "strike": 23250,
+  "selection": "Nearest available CE/PE pair to 09:19 spot close; access sample only",
+  "requests_made": 5,
+  "options": {
+    "CE": {
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "candles": 385,
+      "first_timestamp": 1793591100,
+      "last_timestamp": 1793614140
+    },
+    "PE": {
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "candles": 385,
+      "first_timestamp": 1793591100,
+      "last_timestamp": 1793614140
+    }
+  },
+  "backtest_ready": false,
+  "note": "Raw access sample. Calendar, historical lot sizes, data coverage and execution assumptions remain unaudited.",
+  "sha256": {
+    "ce.csv": "2b3f99e7807555dc46fe4bc7d3ea69d19162b7e52e2b1e5ffb48d697ac42f5dd",
+    "ce_raw.json": "86fc2848c5f86391a685c298c0a592abdb8edf2c88bb96069ac2e7ebe69161ac",
+    "contracts.json": "709a9a6412745317c4b381e6f178422444a61abc3f42507f49c8ded0803d5c3f",
+    "expiry_dates.json": "a8035daa9285cd3d7648afe44fc1171e1e57b80df4e100efca8f2f3bb9d60870",
+    "pe.csv": "5b7fb49f7a37af7ad1c73f69d521961f07055a18877509eb739b78df0e3cb3c9",
+    "pe_raw.json": "49c58f700f4943e636cc12a6bfd2c1560e4c0451384ad716cfd863563cc9bfe6",
+    "spot.csv": "683f21c63b8a247aaca49b5cc98abb1aac8ecfd5a222443af54a8f030f45896b",
+    "spot_raw.json": "e5d670ba4f3b56ed78ff4c642d0df898cdedd0bd9a06013dfc60cba054c6f021"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "provider": "FYERS expired F&O API",
+  "requested_from": "2026-07-27",
+  "requested_to": "2026-11-03",
+  "backtest_ready": false,
+  "contracts": {
+    "CE": {
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "rows": 10146,
+      "sessions": 27,
+      "actual_from": "2026-09-24T10:52:00+05:30",
+      "actual_to": "2026-11-03T15:39:00+05:30",
+      "outside_regular_candle_starts": 270
+    },
+    "PE": {
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "rows": 8227,
+      "sessions": 22,
+      "actual_from": "2026-09-24T09:17:00+05:30",
+      "actual_to": "2026-11-03T15:39:00+05:30",
+      "outside_regular_candle_starts": 220
+    }
+  },
+  "quality_note": "Sample option candles extended past 15:29 IST. Raw rows retained; session and coverage audit required.",
+  "historical_requests_this_run": 2
+}

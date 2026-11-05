@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "check": "regular",
+      "timestamp": "2026-11-02T09:15:00+05:30",
+      "source": "data\\fyers-expired-sample-20261105-03",
+      "raw_values": [
+        1793591100,
+        68.0,
+        103.85,
+        56.0,
+        103.45,
+        7398690
+      ],
+      "raw_csv_equal": true
+    },
+    {
+      "check": "postmarket",
+      "timestamp": "2026-11-03T15:39:00+05:30",
+      "source": "data\\fyers-expired-history-20261105-01",
+      "raw_values": [
+        1793700540,
+        560.05,
+        562.0,
+        560.0,
+        561.45,
+        14105
+      ],
+      "raw_csv_equal": true
+    },
+    {
+      "check": "overlap",
+      "sample_history_equal": true,
+      "timestamp_epoch": 1793591100,
+      "raw_values": [
+        1793591100,
+        68.0,
+        103.85,
+        56.0,
+        103.45,
+        7398690
+      ]
+    }
+  ],
+  "current_source_hashes_reverified": 14
+}

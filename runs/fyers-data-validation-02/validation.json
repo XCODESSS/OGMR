@@ -1,0 +1,513 @@
+{
+  "status": "blocked",
+  "backtest_ready": false,
+  "structural_status": "pass",
+  "coverage_status": "gaps_or_unverified",
+  "metadata_status": "blocked",
+  "source_hashes_unchanged": true,
+  "counts": {
+    "raw_observations": 21018,
+    "unique_observations": 20248,
+    "staged_observations": 19758,
+    "coalesced_staged_observations": 750,
+    "quarantined_source_observations": 510,
+    "conflicts": 0,
+    "identical_overlap_keys": 770,
+    "unique_outside_session": 490,
+    "missing_template_minutes": 492,
+    "staged_option_observations": 17883,
+    "staged_zero_volume_option_observations": 10573,
+    "staged_positive_volume_option_observations": 7310,
+    "staged_spot_observations": 1875
+  },
+  "profiles": [
+    {
+      "source": "sample/ce_raw.json",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "kind": "option",
+      "raw_rows": 385,
+      "invalid_rows": 0,
+      "duplicate_rows": 0,
+      "first_timestamp": "2026-11-02T09:15:00+05:30",
+      "last_timestamp": "2026-11-02T15:39:00+05:30",
+      "observed_dates": 1
+    },
+    {
+      "source": "sample/pe_raw.json",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "kind": "option",
+      "raw_rows": 385,
+      "invalid_rows": 0,
+      "duplicate_rows": 0,
+      "first_timestamp": "2026-11-02T09:15:00+05:30",
+      "last_timestamp": "2026-11-02T15:39:00+05:30",
+      "observed_dates": 1
+    },
+    {
+      "source": "history/ce_raw.json",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "kind": "option",
+      "raw_rows": 10146,
+      "invalid_rows": 0,
+      "duplicate_rows": 0,
+      "first_timestamp": "2026-09-24T10:52:00+05:30",
+      "last_timestamp": "2026-11-03T15:39:00+05:30",
+      "observed_dates": 27
+    },
+    {
+      "source": "history/pe_raw.json",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "kind": "option",
+      "raw_rows": 8227,
+      "invalid_rows": 0,
+      "duplicate_rows": 0,
+      "first_timestamp": "2026-09-24T09:17:00+05:30",
+      "last_timestamp": "2026-11-03T15:39:00+05:30",
+      "observed_dates": 22
+    },
+    {
+      "source": "sample/spot_raw.json",
+      "symbol": "NIFTY",
+      "kind": "spot",
+      "raw_rows": 1875,
+      "invalid_rows": 0,
+      "duplicate_rows": 0,
+      "first_timestamp": "2026-10-27T09:15:00+05:30",
+      "last_timestamp": "2026-11-02T15:29:00+05:30",
+      "observed_dates": 5
+    }
+  ],
+  "findings": [
+    {
+      "code": "zero_volume_option",
+      "severity": "medium",
+      "evidence": "10847 observations/issues; see candle_issues.csv",
+      "impact": "Rows may be invalid or non-executable; source/staging interpretation requires review.",
+      "remediation": "Inspect the referenced raw rows; preserve conflicts and do not fill gaps."
+    },
+    {
+      "code": "calendar_unverified",
+      "severity": "high",
+      "evidence": "Official exchange sessions and special-session status through expiry are not supplied.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "references_unverified",
+      "severity": "high",
+      "evidence": "Official NIFTY open/prior-close and availability before 09:20 are not supplied.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "lot_sizes_missing",
+      "severity": "high",
+      "evidence": "Date-effective historical lot sizes are not supplied.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "listing_history_missing",
+      "severity": "high",
+      "evidence": "Original listing timestamps and metadata validity intervals are not supplied.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "eligible_catalog_unverified",
+      "severity": "high",
+      "evidence": "One expiry catalog does not establish all eligible historical strikes and expiries.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "timestamp_convention_unverified",
+      "severity": "high",
+      "evidence": "Minute-start convention is assumed, not independently verified.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "execution_coverage_unverified",
+      "severity": "high",
+      "evidence": "Required selected-contract execution paths have not been established; no trades simulated.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    },
+    {
+      "code": "research_splits_missing",
+      "severity": "high",
+      "evidence": "Chronological frozen research intervals are not supplied.",
+      "impact": "Historical strategy readiness is blocked.",
+      "remediation": "Supply and audit source evidence offline."
+    }
+  ],
+  "readiness_gaps": [
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-09-24",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-09-25",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-09-28",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-09-29",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-09-30",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-01",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-05",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-06",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-07",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-08",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-09",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-12",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-13",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-14",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-15",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-16",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-19",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-21",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-22",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-23",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-10-26",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NIFTY",
+      "row_number": "",
+      "timestamp": "2026-11-03",
+      "issue_code": "missing_spot_day",
+      "detail": "Option candles exist but no accepted regular-session spot candles exist."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-09-24",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-09-25",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-09-30",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-10-01",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-10-05",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-10-06",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-10-07",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250CE",
+      "row_number": "",
+      "timestamp": "2026-10-08",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "row_number": "",
+      "timestamp": "2026-09-25",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "row_number": "",
+      "timestamp": "2026-09-28",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "row_number": "",
+      "timestamp": "2026-09-30",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "row_number": "",
+      "timestamp": "2026-10-01",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "row_number": "",
+      "timestamp": "2026-10-15",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "merged",
+      "symbol": "NSE:NIFTY26N0323250PE",
+      "row_number": "",
+      "timestamp": "2026-10-26",
+      "issue_code": "missing_option_checkpoint",
+      "detail": "09:21:00 unavailable; not a simulated trade requirement."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "calendar_unverified",
+      "detail": "Official exchange sessions and special-session status through expiry are not supplied."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "references_unverified",
+      "detail": "Official NIFTY open/prior-close and availability before 09:20 are not supplied."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "lot_sizes_missing",
+      "detail": "Date-effective historical lot sizes are not supplied."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "listing_history_missing",
+      "detail": "Original listing timestamps and metadata validity intervals are not supplied."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "eligible_catalog_unverified",
+      "detail": "One expiry catalog does not establish all eligible historical strikes and expiries."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "timestamp_convention_unverified",
+      "detail": "Minute-start convention is assumed, not independently verified."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "execution_coverage_unverified",
+      "detail": "Required selected-contract execution paths have not been established; no trades simulated."
+    },
+    {
+      "source": "metadata",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "research_splits_missing",
+      "detail": "Chronological frozen research intervals are not supplied."
+    },
+    {
+      "source": "merged",
+      "symbol": "",
+      "row_number": "",
+      "timestamp": "",
+      "issue_code": "postmarket_convention_unresolved",
+      "detail": "490 unique observations outside the provisional regular-session template."
+    }
+  ],
+  "assumptions": [
+    "09:15-15:29 IST, 375 minute starts per observed regular session; calendar unverified.",
+    "Sparse option minutes are unavailable observations, not proven provider corruption.",
+    "Same-provider agreement is not independent verification of price accuracy.",
+    "No backtest or profitability analysis was run."
+  ]
+}

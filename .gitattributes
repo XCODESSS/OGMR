@@ -1,0 +1,4 @@
+# Preserve audited exports and report bytes so SHA-256 provenance survives checkout.
+data/fyers-expired-sample-20261105-03/** -text
+data/fyers-expired-history-20261105-01/** -text
+runs/fyers-data-validation-02/** -text

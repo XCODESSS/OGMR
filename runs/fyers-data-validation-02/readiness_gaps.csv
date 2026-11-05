@@ -1,0 +1,46 @@
+source,symbol,row_number,timestamp,issue_code,detail
+merged,NIFTY,,2026-09-24,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-09-25,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-09-28,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-09-29,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-09-30,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-01,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-05,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-06,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-07,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-08,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-09,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-12,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-13,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-14,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-15,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-16,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-19,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-21,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-22,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-23,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-10-26,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NIFTY,,2026-11-03,missing_spot_day,Option candles exist but no accepted regular-session spot candles exist.
+merged,NSE:NIFTY26N0323250CE,,2026-09-24,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-09-25,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-09-30,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-10-01,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-10-05,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-10-06,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-10-07,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250CE,,2026-10-08,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250PE,,2026-09-25,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250PE,,2026-09-28,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250PE,,2026-09-30,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250PE,,2026-10-01,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250PE,,2026-10-15,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+merged,NSE:NIFTY26N0323250PE,,2026-10-26,missing_option_checkpoint,09:21:00 unavailable; not a simulated trade requirement.
+metadata,,,,calendar_unverified,Official exchange sessions and special-session status through expiry are not supplied.
+metadata,,,,references_unverified,Official NIFTY open/prior-close and availability before 09:20 are not supplied.
+metadata,,,,lot_sizes_missing,Date-effective historical lot sizes are not supplied.
+metadata,,,,listing_history_missing,Original listing timestamps and metadata validity intervals are not supplied.
+metadata,,,,eligible_catalog_unverified,One expiry catalog does not establish all eligible historical strikes and expiries.
+metadata,,,,timestamp_convention_unverified,"Minute-start convention is assumed, not independently verified."
+metadata,,,,execution_coverage_unverified,Required selected-contract execution paths have not been established; no trades simulated.
+metadata,,,,research_splits_missing,Chronological frozen research intervals are not supplied.
+merged,,,,postmarket_convention_unresolved,490 unique observations outside the provisional regular-session template.

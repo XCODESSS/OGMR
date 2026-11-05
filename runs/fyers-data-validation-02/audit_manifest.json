@@ -1,0 +1,161 @@
+{
+  "audit_version": 1,
+  "sources": [
+    {
+      "source": "sample",
+      "relative_path": "manifest.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\manifest.json",
+      "size": 1499,
+      "sha256": "f0856e93bcd5a509ba2bcec82b8001f5d72b3cce6ca5947dd556a73d137ce121",
+      "baseline_status": "baseline_not_supplied",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "expiry_dates.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\expiry_dates.json",
+      "size": 381,
+      "sha256": "a8035daa9285cd3d7648afe44fc1171e1e57b80df4e100efca8f2f3bb9d60870",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "contracts.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\contracts.json",
+      "size": 16185,
+      "sha256": "709a9a6412745317c4b381e6f178422444a61abc3f42507f49c8ded0803d5c3f",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "spot_raw.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\spot_raw.json",
+      "size": 213895,
+      "sha256": "e5d670ba4f3b56ed78ff4c642d0df898cdedd0bd9a06013dfc60cba054c6f021",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "spot.csv",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\spot.csv",
+      "size": 148250,
+      "sha256": "683f21c63b8a247aaca49b5cc98abb1aac8ecfd5a222443af54a8f030f45896b",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "ce_raw.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\ce_raw.json",
+      "size": 40762,
+      "sha256": "86fc2848c5f86391a685c298c0a592abdb8edf2c88bb96069ac2e7ebe69161ac",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "ce.csv",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\ce.csv",
+      "size": 27111,
+      "sha256": "2b3f99e7807555dc46fe4bc7d3ea69d19162b7e52e2b1e5ffb48d697ac42f5dd",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "pe_raw.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\pe_raw.json",
+      "size": 39893,
+      "sha256": "49c58f700f4943e636cc12a6bfd2c1560e4c0451384ad716cfd863563cc9bfe6",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "sample",
+      "relative_path": "pe.csv",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-03\\pe.csv",
+      "size": 26242,
+      "sha256": "5b7fb49f7a37af7ad1c73f69d521961f07055a18877509eb739b78df0e3cb3c9",
+      "baseline_status": "verified",
+      "incomplete": false
+    },
+    {
+      "source": "history",
+      "relative_path": "manifest.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-history-20261105-01\\manifest.json",
+      "size": 828,
+      "sha256": "7989c8a52438e2f47e1518150b41cf0a341f81406bccbb0d51397d6890e47531",
+      "baseline_status": "baseline_not_supplied",
+      "incomplete": false
+    },
+    {
+      "source": "history",
+      "relative_path": "ce_raw.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-history-20261105-01\\ce_raw.json",
+      "size": 1019914,
+      "sha256": "18b1762d367cbeee830a214ec35271626d9c59ee918673f3d8cc66404ecfa74b",
+      "baseline_status": "baseline_not_supplied",
+      "incomplete": false
+    },
+    {
+      "source": "history",
+      "relative_path": "ce.csv",
+      "path": "D:\\intra-strat\\data\\fyers-expired-history-20261105-01\\ce.csv",
+      "size": 664628,
+      "sha256": "91a13d7f547c70d7831401ce3de814bc55a390de89c89652478378012cf50da0",
+      "baseline_status": "baseline_not_supplied",
+      "incomplete": false
+    },
+    {
+      "source": "history",
+      "relative_path": "pe_raw.json",
+      "path": "D:\\intra-strat\\data\\fyers-expired-history-20261105-01\\pe_raw.json",
+      "size": 832812,
+      "sha256": "615e73868cc82ea9b5d71d6560e65f6f0504738a2eb463007dd984ca8a58f159",
+      "baseline_status": "baseline_not_supplied",
+      "incomplete": false
+    },
+    {
+      "source": "history",
+      "relative_path": "pe.csv",
+      "path": "D:\\intra-strat\\data\\fyers-expired-history-20261105-01\\pe.csv",
+      "size": 544691,
+      "sha256": "3e9ce9a05622b328a84ba893e7deb6e13e0c194bdd5edad9edc922b0dfc2652c",
+      "baseline_status": "baseline_not_supplied",
+      "incomplete": false
+    },
+    {
+      "source": "fyers-expired-sample-20261105-01",
+      "relative_path": "",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-01",
+      "size": "",
+      "sha256": "",
+      "baseline_status": "excluded_failed_attempt",
+      "incomplete": true
+    },
+    {
+      "source": "fyers-expired-sample-20261105-02",
+      "relative_path": "",
+      "path": "D:\\intra-strat\\data\\fyers-expired-sample-20261105-02",
+      "size": "",
+      "sha256": "",
+      "baseline_status": "excluded_failed_attempt",
+      "incomplete": true
+    }
+  ],
+  "row_accounting": {
+    "raw": 21018,
+    "staged": 19758,
+    "coalesced": 750,
+    "quarantine": 510
+  },
+  "assumptions": [
+    "09:15-15:29 IST, 375 minute starts per observed regular session; calendar unverified.",
+    "Sparse option minutes are unavailable observations, not proven provider corruption.",
+    "Same-provider agreement is not independent verification of price accuracy.",
+    "No backtest or profitability analysis was run."
+  ]
+}
